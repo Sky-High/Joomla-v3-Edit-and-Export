@@ -6,6 +6,8 @@ This guide continues from the tutorial 'Developing an MVC Component' (aka the 'H
 
 Version history:
 
+v1-17 2016-03	add a first stab for csv export of the database data
+
 v1-16 2016-03	add data entry
 
 v1-15 2016-03	initial version based on https://github.com/scionescire/Joomla-3.2-Hello-World-Component/archive/step-15-adding-an-install-uninstall-update-script-file.zip

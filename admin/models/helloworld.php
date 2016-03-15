@@ -103,4 +103,27 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 			return JFactory::getUser()->authorise( "core.delete", "com_helloworld.message." . $record->id );
 		}
 	}
+
+	/**
+	 * Method to get the data that should be exported.
+	 * @return  mixed  The data.
+	 */
+	public function getExportData($pks)
+	{
+		$pklist 	= implode(',', $pks);
+
+		$db    = JFactory::getDBO();
+		$query = $db->getQuery(true);
+		$query->select('h.id, h.greeting, c.title as category')
+			  ->from('#__helloworld as h')
+			  ->leftJoin('#__categories as c ON h.catid=c.id')
+			  ->where('h.id IN ('.$pklist.')');
+		$db->setQuery((string)$query);
+		$rows = $db->loadRowList();
+
+		// return the results as an array of items, each consisting of an array of fields
+		$content	= array( array('id', 'greeting', 'category') );
+		$content	= array_merge( $content,  $rows);
+		return $content;
+	}
 }
