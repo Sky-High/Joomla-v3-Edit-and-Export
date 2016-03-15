@@ -37,6 +37,8 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
+		$this->script		= $this->get('Script');
+
 
 		// What Access Permissions does this user have? What can (s)he do?
 		$this->canDo = HelloWorldHelper::getActions();
@@ -98,7 +100,10 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 
 		if ($this->canDo->get('core.edit'))
 		{
-			JToolBarHelper::custom('helloexport.exportcsv', 'download', '', 'Export test', true);
+			// dedicated button to start subcontroller with format='raw'
+			$toolbar	= JToolbar::getInstance('toolbar');
+			$toolbar->addButtonPath(JPATH_COMPONENT.'/button');
+			$toolbar->appendButton('RawFormat', 'download', 'Export csv', 'helloexport.exportcsv');
 		}
 
 		if ($this->canDo->get('core.admin'))
@@ -117,5 +122,8 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 	{
 		$document = JFactory::getDocument();
 		$document->setTitle(JText::_('COM_HELLOWORLD_ADMINISTRATION'));
+		$document->addScript(JURI::root()
+				."/administrator/components/com_helloworld"
+				."/views/helloworlds/submitbutton.js");
 	}
 }

@@ -1,10 +1,12 @@
-# Joomla-3-2-Hello-World-Data-Entry-and-Export
+# Joomla3 HelloWorld Data Entry and Export
 This tutorial aims to provide a guideline for creating a component for your Joomla website that enables users to update data in the database and download data as a file. This can be used for instance as base for an address book.
 
 This guide continues from the tutorial 'Developing an MVC Component' (aka the 'Hello World' tutorial) from this Joomla site: https://docs.joomla.org/J3.x:Developing_an_MVC_Component.
 
 
 Version history:
+
+v1-18 2016-03	improved export function
 
 v1-17 2016-03	add a first stab for csv export of the database data
 
