@@ -26,6 +26,19 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 	 */
 	function display($tpl = null)
 	{
+		// fully qualified path of current page
+		$this->HelloURI	= JFactory::getURI();
+
+		// check post from form if data needs to be updated
+		$input		= JFactory::getApplication()->input;
+		$postdata	= $input->post->getString('greetfield');
+
+		if( !empty($postdata) ) {
+			//first check for form tampering, and then update the data
+			JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+			$this->getModel()->updateThisItem($postdata);
+		}
+
 		// Assign data to the view
 		$this->item = $this->get('Item');
 

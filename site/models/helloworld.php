@@ -94,4 +94,17 @@ class HelloWorldModelHelloWorld extends JModelItem
 		}
 		return $this->item;
 	}
+
+	/**
+	 * Update current message
+	 * @return true on success
+	 */
+	public function updateThisItem($data)
+	{
+		$obj		= new stdClass();			//create empty object
+		$obj->id	= $this->getState('message.id');	//key for present item
+		$obj->greeting	= $data;				//new value
+		$db		= JFactory::getDbo();
+		return $db->updateObject('#__helloworld', $obj, 'id');	//update item in database
+	}
 }

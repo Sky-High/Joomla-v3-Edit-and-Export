@@ -13,3 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 <h1><?php echo $this->item->greeting.(($this->item->category and $this->item->params->get('show_category'))
                                       ? (' ('.$this->item->category.')') : ''); ?>
 </h1>
+
+<form action="<?php echo $this->HelloURI; ?>" method="post" id="HelloForm" name="HelloForm">
+Greeting: <input type="text" name="greetfield" value="<?php echo $this->item->greeting; ?>">
+<input type="submit" value="Update Record">
+<?php echo JHtml::_('form.token'); ?>
+</form>
