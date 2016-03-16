@@ -4,7 +4,6 @@ This tutorial aims to provide a guideline for creating a component for your Joom
 This guide continues from the tutorial 'Developing an MVC Component' (aka the 'Hello World' tutorial) from this Joomla site: https://docs.joomla.org/J3.x:Developing_an_MVC_Component.
 
 As of version 1-19 this tutorial support export of userdata from the database using the PHPExcel package. See https://github.com/PHPOffice/PHPExcel.
-Install this package by downloading the package from https://github.com/PHPOffice/PHPExcel/archive/1.8.zip and copying the PHPExcel Classes directory to $_SERVER['DOCUMENT_ROOT']/lib/Classes .
 
 
 Version history:
